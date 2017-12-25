@@ -16,7 +16,7 @@ Vue+Parcel Scaffold Template
 
   --help      显示帮助信息               [布尔]  
   --version   显示版本号                 [布尔]  
-  -i, --init  选择要创建的工程类型并创建   [字符串]  
+  -i, --init  选择要创建的工程类型并创建   [字符串]
   -a, --add   添加映射                [字符串]  
   -d, --del   删除映射                [字符串]  
   -l, --list  映射列表                  [布尔]  
@@ -36,6 +36,23 @@ Webpack+Vue+Elementui,
 还可以自定义配置各种框架模板，通过nek scaffold -a加入映射关系。
 
 # parcel问题记录
+
+### request undefined
+
+因为babel工具会在打包后的文件首行会加入use strict严格模式，而parcel打包后首先就是暴露request全局变量
+
+```
+request = (fn(){})({id: [fn, {}], ...}, {}, []);
+
+详细如下：
+
+request = (function (modules, cache, entry) {
+	//todo
+	return newRequire;
+})({id: [function(require,module,exports){},{dependencies}], ...}, {}, [0, 2])
+```
+
+因此会报错，该问题可以通过升级node>8解决，同时parce的后续版本会解决这个问题。
 
 ### 关于babel-preset-env
 
@@ -78,4 +95,22 @@ resolve: {
 		'vue$': 'vue/dist/vue.esm.js'
 	}
 }
+```
+
+### 合适的方法处理相对路径
+
+webpack中通过resolve配置alias来定义绝对路径，避免过多的../../相对路径来加载模块，在parcel中可以通过babel-plugin-module-resolver来定义别名。  
+
+[babel-plugin-module-resolver](https://www.npmjs.com/package/babel-plugin-module-resolver)  
+
+在.babelrc中配置如下： 
+
+```
+"plugins": [
+    ["module-resolver", {
+        "alias": {
+            "@": ["./src"]
+        }
+    }]
+] 
 ```

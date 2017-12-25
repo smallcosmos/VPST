@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
-// import actions from './actions'
-// import mutations from './mutations'
+import actions from './actions'
+import mutations from './mutations'
 
 // modules
 // import * as quotation from './module/quotation'
@@ -12,7 +12,7 @@ const state = {
   userInfo: {
     username: ''
   },
-  sidebarActive: true,
+  // sidebarActive: true,
 }
 
 // const modules = {
@@ -23,6 +23,6 @@ export default new Vuex.Store({
   state,
   actions,
   mutations,
-  modules,
-  strict: debug
+  // modules,
+  // strict: debug
 })
