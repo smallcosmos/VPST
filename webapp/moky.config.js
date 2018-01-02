@@ -16,7 +16,7 @@ module.exports = {
   middlewares: path.resolve(__dirname, 'build', 'moky.middleware.js'),
   /* Settings for proxy, OPTIONAL */
   proxyMaps: {
-      local: 'http://localhost:8080',
+      local: 'http://localhost:80',
       stable_dev: 'http://10.165.125.68:8182',
       stable_master: 'http://10.165.126.187:10080',
       wangqiang: 'http://10.240.180.191:8080',

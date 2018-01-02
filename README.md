@@ -114,3 +114,65 @@ webpack中通过resolve配置alias来定义绝对路径，避免过多的../../�
     }]
 ] 
 ```
+
+### koa格式和express格式中间件的兼容
+
+parcel对外暴露的中间件是提供express使用的， 返回的函数格式如下：  
+
+`return function(req, res, next) {...}`  
+
+而koa的中间件使用形式为  
+
+`app.use((ctx, next))`
+
+可以用以下方式做一层兼容，同样的方案适用于connect-history-api-fallback，不过parcel并不需要connect-history-api-fallback，parcel内部提供了同样的功能，只需使用它的中间件即可。
+
+```
+  const bundler = new Bundler('index.html');
+  //parcel打包的node接口
+  bundler.bundle();
+  function bundleMiddleware () {
+    //parce对外的中间件
+    const middleware = bundler.middleware();
+
+    //返回koa格式的中间件
+    return (ctx, next) => {
+        middleware(ctx.req, ctx.res, next);
+    };
+  }
+
+  const app = new Koa();
+  app.use(bundleMiddleware());
+```
+
+### Koa框架下使用bundle.middleware进行静态资源代理报错
+
+Error: Can't set headers after they are sent
+
+origin module: send
+
+cause: Koa is sending a response as soon as your main function returns.
+
+[bugs](https://github.com/pillarjs/send/issues/118)
+
+source code: 
+
+```
+if (headersSent(res)) {
+  // impossible to send now
+  this.headersAlreadySent()
+  return
+}
+function headersSent (res) {
+  return typeof res.headersSent !== 'boolean'
+    ? Boolean(res._header)
+    : res.headersSent
+}
+SendStream.prototype.headersAlreadySent = function headersAlreadySent () {
+  var err = new Error('Can\'t set headers after they are sent.')
+  debug('headers already sent')
+  this.error(500, err)
+}
+```
+
+
