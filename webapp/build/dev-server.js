@@ -1,11 +1,12 @@
 const Bundler = require('parcel-bundler');
+// const Bundler = require('/Users/linxingjian/work/e/parcel');
 const Express = require('express');
 const chalk = require('chalk');
 const moky = require('/Users/linxingjian/work/e/moky/src/index');
 
 const config = require('../moky.config.js');
 
-const bundler = new Bundler('index.html');
+const bundler = new Bundler('index.html', {});
 bundler.bundle();
 const app = Express();
 

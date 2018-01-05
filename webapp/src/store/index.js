@@ -10,9 +10,9 @@ Vue.use(Vuex);
 
 const state = {
   userInfo: {
-    username: ''
+    username: 'Admin'
   },
-  // sidebarActive: true,
+  sidebarActive: true,
 }
 
 // const modules = {

@@ -175,4 +175,20 @@ SendStream.prototype.headersAlreadySent = function headersAlreadySent () {
 }
 ```
 
+### postcss-autoreset重复引入
+
+加载css文件时，都会依次加载postcss来处理css，  
+因此如果使用了postcss-autoreset, 将会在打包生成的css文件中重复出现以下reset代码 
+
+```
+html {
+  margin : 0;
+  padding : 0;
+  border : 0;
+  font-size : 100%;
+  font : inherit;
+  vertical-align : baseline;
+}
+```
+
 

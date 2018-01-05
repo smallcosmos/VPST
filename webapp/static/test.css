@@ -29,15 +29,6 @@ html{} /*test stylelint*/
   font-size:18px;
   color:#fff;
 
-  &:before {
-    content:'';
-    display:inline-block;
-    width:34px;
-    height:34px;
-    margin-right:9px;
-    background-image:url(//haitao.nos.netease.com/2fecfadc7d48464b90c2fe9b5d92412a.svg);
-  }
-
   @e link {
     position:absolute;
     width:100%;
@@ -45,5 +36,14 @@ html{} /*test stylelint*/
     left:0;
     top:0;
     text-decoration:none;
+  }
+
+  &:before {
+    content:'';
+    display:inline-block;
+    width:34px;
+    height:34px;
+    margin-right:9px;
+    background-image:url(//haitao.nos.netease.com/2fecfadc7d48464b90c2fe9b5d92412a.svg);
   }
 }

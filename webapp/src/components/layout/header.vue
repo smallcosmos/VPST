@@ -2,7 +2,7 @@
   <header class="header">
     <h1 class="header-title">Webapp<a href="/" class="header-title__link"></a></h1>
     <div class="header-right">
-      hi <span id="navUserName">asd</span> <a class="header-right__link" href="javascript:;" @click="logout">退出</a>
+      Hi <span id="navUserName">{{userInfo.username}}</span> <a class="header-right__link" href="javascript:;" @click="logout">退出</a>
     </div>
   </header>
 </template>

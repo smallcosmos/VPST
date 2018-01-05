@@ -1,1 +1,3 @@
 export const LOGOUT_SUCCESS = 'LOGOUT_SUCCESS';
+
+export const TOGGLE_SIDEBAR = 'TOGGLE_SIDEBAR';

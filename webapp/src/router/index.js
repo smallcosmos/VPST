@@ -7,11 +7,15 @@ const routes = [{
     path: '/',
     name: 'Index',
     components: {
-        header: () => import('../components/layout/header'),
-        // header: resolve => require(['../components/layout/header.vue'], resolve)
-        // sidebar: resolve => require(['../components/layout/SideBar'], resolve),
-        // body: resolve => require(['../components/layout/Body'], resolve),
-    }
+        header: () => import('@/components/layout/header'),
+        menu: () => import('@/components/layout/menu'),
+        body: () => import('@/components/layout/body')
+    },
+    children: [{
+        path: '/moduleA',
+        name: 'ModuleA',
+        component: () => import('@/components/layout/main')
+    }]
 }];
 
 const router = new Router({routes});

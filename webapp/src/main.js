@@ -7,6 +7,8 @@ import App from './App';
 import router from './router';
 import store from './store';
 
+import '../static/reset.css';
+
 // import '../static/test.css';
 // import '../static/test.scss';
 // import '../static/test.sass';

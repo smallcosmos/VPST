@@ -14,8 +14,23 @@
 			],
 			"unspecified-properties-position": "bottom"
 		},
+		"postcss-bem": {
+			"style": "bem", // suit or bem, suit by default, 
+			"separators": {
+				"descendent": "__", // overwrite any default separator for chosen style 
+				"modifier": "--"
+			},
+			"shortcuts": {
+				"component": "b",
+				"modifier": "m",
+				"descendent": "e",
+				"utility": "util" //override at-rule name 
+			}
+		},
 		//https://github.com/stylelint/stylelint/blob/master/docs/user-guide/configuration.md
-		"stylelint": {},
+		// "stylelint": {
+		// 	"extends": "stylelint-config-standard"
+		// },
 		// "bem": {
 		// 	"shortcuts": {
 		// 		"component": "b",
@@ -27,17 +42,5 @@
 		// 		"modifier": "--"
 		// 	}
 		// },
-		// "postcss-bem": {
-		// 	"style": "bem", // suit or bem, suit by default, 
-		//     "separators": {
-		//         "descendent": "__" // overwrite any default separator for chosen style 
-		//     },
-		//     "shortcuts": {
-		//     	"component": "b",
-		// 		"modifier": "m",
-		// 		"descendent": "e",
-		//         "utility": "util" //override at-rule name 
-		//     }
-		// }
 	}
 }
