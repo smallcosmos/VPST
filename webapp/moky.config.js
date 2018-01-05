@@ -7,13 +7,8 @@ module.exports = {
   asyncMockPath: path.join(__dirname, 'moky_mock', 'async_mock'),
   /* Path of favicon.ico, OPTIONAL */
   faviconPath: path.join(__dirname, 'static/favicon.ico'),
-  /* Static router, OPTIONAL but usually required */
   /* Default mock data, OPTIONAL */
   defaultMock: { code: 200, message: 'ok' },
-  /* Not show logs if url is in the list, OPTIONAL */
-  filteredUrls: [],
-  /* Custom middlewares for moky, OPTIONAL */
-  middlewares: path.resolve(__dirname, 'build', 'moky.middleware.js'),
   /* Settings for proxy, OPTIONAL */
   proxyMaps: {
       local: 'http://localhost:80',
